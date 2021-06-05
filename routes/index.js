@@ -2,6 +2,7 @@ import { Router } from "express";
 import fs from "fs";
 import path from "path";
 import parseMd from "parse-md";
+import hljs from "highlight.js";
 
 const router = Router();
 
@@ -23,7 +24,26 @@ router.get("/:slug/view", (req, res) => {
   const about = fs.readFileSync(aboutPath, "utf-8");
   const { metadata } = parseMd(about);
 
-  res.render("demo", { slug, metadata, images });
+  // Getting code text
+  let css, js, markup;
+  const stylesPath = path.join(__dirname, "../demos", slug, "css/styles.css");
+  if (fs.existsSync(stylesPath)) {
+    css = fs.readFileSync(stylesPath, "utf-8");
+  }
+  const jsPath = path.join(__dirname, "../demos", slug, "js/app.js");
+  if (fs.existsSync(jsPath)) {
+    js = fs.readFileSync(jsPath, "utf-8");
+  }
+  const markupPath = path.join(__dirname, "../demos", slug, "index.html");
+  markup = fs.readFileSync(markupPath, "utf-8");
+
+  const code = {
+    css: css && hljs.highlightAuto(css).value,
+    js: js && hljs.highlightAuto(js).value,
+    markup: hljs.highlightAuto(markup).value,
+  };
+
+  res.render("demo", { slug, metadata, images, code });
 });
 
 module.exports = router;

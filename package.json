@@ -12,6 +12,7 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "highlight.js": "^11.0.1",
     "parse-md": "^2.0.4"
   },
   "devDependencies": {

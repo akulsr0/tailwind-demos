@@ -1,52 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/atom-one-dark.min.css"
+    />
     <link rel="stylesheet" href="/css/styles.css" />
-    <title>
-        Tailwind Demos: <%= metadata.title %>
-    </title>
-</head>
+    <title>Tailwind Demos: <%= metadata.title %></title>
+  </head>
 
-<body>
+  <body>
     <!-- Header -->
-    <div class="w-full bg-indigo-800 p-2 px-4 flex flex-row items-center justify-between">
-        <span class="text-white font-bold text-xl cursor-pointer" onclick="gotoHome()">Home</span>
-        <img class="cursor-pointer" src="/assets/github-icon.png" alt="github" width="32px"
-            onclick="openGithubRepo()" />
+    <div
+      class="
+        w-full
+        bg-indigo-800
+        p-2
+        px-4
+        flex flex-row
+        items-center
+        justify-between
+      "
+    >
+      <span
+        class="text-white font-bold text-xl cursor-pointer"
+        onclick="gotoHome()"
+        >Home</span
+      >
+      <img
+        class="cursor-pointer"
+        src="/assets/github-icon.png"
+        alt="github"
+        width="32px"
+        onclick="openGithubRepo()"
+      />
     </div>
     <!-- Content -->
-    <div class="p-4">
-        <!-- Title -->
-        <span class="font-extrabold text-2xl">
-            <%= metadata.title %>
-        </span>
-        <!-- Description -->
-        <div class="mt-2">
-            <%= metadata.description %>
+    <div class="py-4">
+      <!-- Title -->
+      <span class="font-extrabold text-2xl px-2"> <%= metadata.title %> </span>
+      <!-- Description -->
+      <div class="mt-2 px-2"><%= metadata.description %></div>
+      <!-- Screenshots -->
+      <div class="mt-4 px-2">
+        <span class="font-bold text-xl">Screenshots</span>
+        <div class="py-4 flex flex-row overflow-scroll">
+          <% images.map(image=> { %>
+          <img
+            class="max-h-64 mr-2"
+            src="/<%=slug%>/assets/<%=image%>"
+            alt=""
+          />
+          <% }) %>
         </div>
-        <!-- Screenshots -->
-        <div class="mt-4">
-            <span class="font-bold text-xl">Screenshots</span>
-            <div class="py-4 flex flex-row overflow-scroll">
-                <% images.map(image=> { %>
-                    <img class="max-h-64 mr-2" src="/<%=slug%>/assets/<%=image%>" alt="">
-                    <% }) %>
+      </div>
+      <!-- Actions -->
+      <div class="mt-2 px-2">
+        <button
+          class="bg-indigo-600 p-2 font-bold rounded text-white"
+          onclick="openDemo('<%=slug%>')"
+        >
+          Preview
+        </button>
+        <button
+          class="bg-indigo-700 p-2 font-bold rounded text-white"
+          onclick="openDemoGithub('<%=slug%>')"
+        >
+          Github
+        </button>
+      </div>
+      <!-- Code -->
+      <div class="mt-4">
+        <!-- HTML -->
+        <div>
+          <div class="px-2">
+            <div
+              class="flex flex-row items-center cursor-pointer"
+              onclick="toggleHtmlCodeView()"
+            >
+              <span class="font-bold text-xl">index.html</span>
+              <span>
+                <img
+                  id="toggle-html-code-arrow"
+                  class="w-4 ml-2"
+                  src="https://upload.wikimedia.org/wikipedia/commons/1/10/TriangleArrow-Up.svg"
+                  alt=""
+                />
+              </span>
             </div>
+            <hr />
+          </div>
+          <div
+            id="html-code"
+            class="
+              whitespace-pre
+              bg-gray-900
+              text-gray-200
+              px-2
+              overflow-scroll
+              mt-2
+              hidden
+            "
+          >
+            <%-code.markup %>
+          </div>
         </div>
-        <!-- Actions -->
+        <!-- JS -->
+        <% if(code.js) { %>
         <div class="mt-2">
-            <button class="bg-indigo-600 p-2 font-bold rounded text-white"
-                onclick="openDemo('<%=slug%>')">Preview</button>
-            <button class="bg-indigo-700 p-2 font-bold rounded text-white">Code</button>
+          <div class="px-2">
+            <div
+              class="flex flex-row items-center cursor-pointer"
+              onclick="toggleJSCodeView()"
+            >
+              <span class="font-bold text-xl">app.js</span>
+              <span>
+                <img
+                  id="toggle-js-code-arrow"
+                  class="w-4 ml-2"
+                  src="https://upload.wikimedia.org/wikipedia/commons/1/10/TriangleArrow-Up.svg"
+                  alt=""
+                />
+              </span>
+            </div>
+            <hr />
+          </div>
+          <div
+            id="js-code"
+            class="
+              whitespace-pre
+              bg-gray-900
+              text-gray-200
+              px-2
+              overflow-scroll
+              mt-2
+              hidden
+            "
+          >
+            <%-code.js %>
+          </div>
         </div>
+        <% }; %>
+
+        <!-- CSS -->
+        <% if(code.css) { %>
+        <div class="mt-2">
+          <div class="px-2">
+            <div
+              class="flex flex-row items-center cursor-pointer"
+              onclick="toggleCSSCodeView()"
+            >
+              <span class="font-bold text-xl">styles.js</span>
+              <span>
+                <img
+                  id="toggle-css-code-arrow"
+                  class="w-4 ml-2"
+                  src="https://upload.wikimedia.org/wikipedia/commons/1/10/TriangleArrow-Up.svg"
+                  alt=""
+                />
+              </span>
+            </div>
+            <hr />
+          </div>
+          <div
+            id="css-code"
+            class="
+              whitespace-pre
+              bg-gray-900
+              text-gray-200
+              px-2
+              overflow-scroll
+              mt-2
+              hidden
+            "
+          >
+            <%-code.css %>
+          </div>
+        </div>
+        <% } %>
+      </div>
     </div>
-</body>
+  </body>
 
-<script src="/js/main.js"></script>
-
+  <script src="/js/main.js"></script>
 </html>
