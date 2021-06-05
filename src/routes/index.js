@@ -7,7 +7,7 @@ import hljs from "highlight.js";
 const router = Router();
 
 router.get("/", (req, res) => {
-  const demosDir = path.join(__dirname, "../demos");
+  const demosDir = path.join(__dirname, "../../demos");
   const demos = fs.readdirSync(demosDir);
   res.render("index", { demos });
 });
@@ -16,25 +16,30 @@ router.get("/:slug/view", (req, res) => {
   const { slug } = req.params;
 
   // Getting Images names
-  const imagesPath = path.join(__dirname, "../demos", slug, "assets", "");
+  const imagesPath = path.join(__dirname, "../../demos", slug, "assets", "");
   const images = fs.readdirSync(imagesPath);
 
   // Getting metadata from About.md
-  const aboutPath = path.join(__dirname, "../demos", slug, "About.md");
+  const aboutPath = path.join(__dirname, "../../demos", slug, "About.md");
   const about = fs.readFileSync(aboutPath, "utf-8");
   const { metadata } = parseMd(about);
 
   // Getting code text
   let css, js, markup;
-  const stylesPath = path.join(__dirname, "../demos", slug, "css/styles.css");
+  const stylesPath = path.join(
+    __dirname,
+    "../../demos",
+    slug,
+    "css/styles.css"
+  );
   if (fs.existsSync(stylesPath)) {
     css = fs.readFileSync(stylesPath, "utf-8");
   }
-  const jsPath = path.join(__dirname, "../demos", slug, "js/app.js");
+  const jsPath = path.join(__dirname, "../../demos", slug, "js/app.js");
   if (fs.existsSync(jsPath)) {
     js = fs.readFileSync(jsPath, "utf-8");
   }
-  const markupPath = path.join(__dirname, "../demos", slug, "index.html");
+  const markupPath = path.join(__dirname, "../../demos", slug, "index.html");
   markup = fs.readFileSync(markupPath, "utf-8");
 
   const code = {

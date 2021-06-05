@@ -1,46 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tailwind Demos</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Top Container -->
     <div class="w-full h-96 bg-indigo-800 flex flex-col">
-        <div class="p-2 px-4 flex flex-row-reverse">
-            <img class="cursor-pointer" src="./assets/github-icon.png" alt="github" width="32px"
-                onclick="openGithubRepo()" />
-        </div>
-        <div class="flex-1 flex items-center justify-center">
-            <span class="text-white font-bold text-4xl px-4 text-center">Tailwind Demo's</span>
-        </div>
+      <div class="p-2 px-4 flex flex-row-reverse">
+        <img
+          class="cursor-pointer"
+          src="./assets/github-icon.png"
+          alt="github"
+          width="32px"
+          onclick="openGithubRepo()"
+        />
+      </div>
+      <div class="flex-1 flex items-center justify-center">
+        <span class="text-white font-bold text-4xl px-4 text-center"
+          >Tailwind Demo's</span
+        >
+      </div>
     </div>
     <!-- Main Container -->
     <div class="px-4 mt-2">
-        <div class="flex flex-row">
-            <input class="w-full h-10 border border rounded-md px-2" type="text" placeholder="Search">
-            <button class="bg-indigo-600 ml-2 px-4 text-white rounded-md">Go</button>
+      <div class="flex flex-row">
+        <input
+          class="w-full h-10 border border rounded-md px-2"
+          type="text"
+          placeholder="Search"
+        />
+        <button class="bg-indigo-600 ml-2 px-4 text-white rounded-md">
+          Go
+        </button>
+      </div>
+      <div id="demos-container" class="flex flex-row flex-wrap justify-evenly">
+        <% demos.map(demo=> { %>
+        <div
+          class="
+            flex flex-col
+            mx-2
+            min-w-max
+            mt-8
+            cursor-pointer
+            border border-2
+            rounded-md
+            pt-2
+            overflow-hidden
+          "
+          onclick="openDemoView('<%=demo%>')"
+        >
+          <img src="/<%=demo%>/assets/desktop.png" alt="" class="w-80" />
+          <span
+            class="text-center font-bold text-xl mt-2 bg-indigo-800 text-white"
+          >
+            <%= demo.replaceAll('-', ' ' ) %>
+          </span>
         </div>
-        <div id='demos-container' class="flex flex-row flex-wrap justify-evenly">
-            <% demos.map(demo=> { %>
-                <div class="flex flex-col mx-2 min-w-max mt-8 cursor-pointer border border-2 rounded-md pt-2 overflow-hidden"
-                    onclick="openDemoView('<%=demo%>')">
-                    <img src="./<%=demo%>/assets/desktop.png" alt="" class="w-80">
-                    <span class="text-center font-bold text-xl mt-2 bg-indigo-800 text-white">
-                        <%= demo.replaceAll('-', ' ' ) %>
-                    </span>
-                </div>
-                <% }) %>
-        </div>
+        <% }) %>
+      </div>
     </div>
-</body>
+  </body>
 
-<script src="/js/main.js"></script>
-
+  <script src="/js/main.js"></script>
 </html>

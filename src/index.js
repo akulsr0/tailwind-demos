@@ -1,14 +1,15 @@
 import express from "express";
 import cors from "cors";
 import ejs from "ejs";
+import path from "path";
 
 const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
-app.use(express.static(__dirname + "/demos"));
+app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../demos")));
 
 app.use("/", require("./routes/index"));
 
