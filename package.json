@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --exec babel-node index.js",
+    "start": "babel-node index.js",
     "dev": "nodemon --exec babel-node index.js"
   },
   "author": "Akul Srivastava",
@@ -17,6 +17,7 @@
     "parse-md": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
     "@babel/node": "^7.14.2",
     "@babel/preset-env": "^7.14.4"
