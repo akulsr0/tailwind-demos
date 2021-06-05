@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>
+        Tailwind Demos: <%= metadata.title %>
+    </title>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="w-full bg-indigo-800 p-2 px-4 flex flex-row items-center justify-between">
+        <span class="text-white font-bold text-xl cursor-pointer" onclick="gotoHome()">Home</span>
+        <img class="cursor-pointer" src="/assets/github-icon.png" alt="github" width="32px"
+            onclick="openGithubRepo()" />
+    </div>
+    <!-- Content -->
+    <div class="p-4">
+        <!-- Title -->
+        <span class="font-extrabold text-2xl">
+            <%= metadata.title %>
+        </span>
+        <!-- Description -->
+        <div class="mt-2">
+            <%= metadata.description %>
+        </div>
+        <!-- Screenshots -->
+        <div class="mt-4">
+            <span class="font-bold text-xl">Screenshots</span>
+            <div class="py-4 flex flex-row overflow-scroll">
+                <% images.map(image=> { %>
+                    <img class="max-h-64 mr-2" src="/<%=slug%>/assets/<%=image%>" alt="">
+                    <% }) %>
+            </div>
+        </div>
+        <!-- Actions -->
+        <div class="mt-2">
+            <button class="bg-indigo-600 p-2 font-bold rounded text-white"
+                onclick="openDemo('<%=slug%>')">Preview</button>
+            <button class="bg-indigo-700 p-2 font-bold rounded text-white">Code</button>
+        </div>
+    </div>
+</body>
+
+<script src="/js/main.js"></script>
+
+</html>

@@ -30,7 +30,7 @@
         <div id='demos-container' class="flex flex-row flex-wrap justify-evenly">
             <% demos.map(demo=> { %>
                 <div class="flex flex-col mx-2 min-w-max mt-8 cursor-pointer border border-2 rounded-md pt-2 overflow-hidden"
-                    onclick="openDemo('<%=demo%>')">
+                    onclick="openDemoView('<%=demo%>')">
                     <img src="./<%=demo%>/assets/desktop.png" alt="" class="w-80">
                     <span class="text-center font-bold text-xl mt-2 bg-indigo-800 text-white">
                         <%= demo.replaceAll('-', ' ' ) %>
@@ -41,13 +41,6 @@
     </div>
 </body>
 
-<script>
-    const openDemo = name => {
-        window.location.href = name
-    }
-    const openGithubRepo = () => {
-        window.open('https://github.com/akulsr0/tailwind-demos', '_blank')
-    }
-</script>
+<script src="/js/main.js"></script>
 
 </html>
