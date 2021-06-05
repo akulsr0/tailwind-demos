@@ -14,7 +14,8 @@
     <!-- Top Container -->
     <div class="w-full h-96 bg-indigo-800 flex flex-col">
         <div class="p-2 px-4 flex flex-row-reverse">
-            <img src="./assets/github-icon.png" alt="github" width="32px" />
+            <img class="cursor-pointer" src="./assets/github-icon.png" alt="github" width="32px"
+                onclick="openGithubRepo()" />
         </div>
         <div class="flex-1 flex items-center justify-center">
             <span class="text-white font-bold text-4xl px-4 text-center">Tailwind Demo's</span>
@@ -43,6 +44,9 @@
 <script>
     const openDemo = name => {
         window.location.href = name
+    }
+    const openGithubRepo = () => {
+        window.open('https://github.com/akulsr0/tailwind-demos', '_blank')
     }
 </script>
 

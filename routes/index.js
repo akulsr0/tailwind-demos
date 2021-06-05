@@ -7,7 +7,6 @@ const router = Router();
 router.get("/", (req, res) => {
   const demosDir = path.join(__dirname, "../demos");
   const demos = fs.readdirSync(demosDir);
-  console.log(demos);
   res.render("index", { demos });
 });
 
