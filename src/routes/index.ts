@@ -9,6 +9,7 @@ const router: Router = Router();
 router.get("/", (req, res) => {
   const demosDir = path.join(__dirname, "../../demos");
   const demos: string[] = fs.readdirSync(demosDir);
+
   res.render("index", { demos });
 });
 
