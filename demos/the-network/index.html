@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>John Doe: Profile</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container mx-auto px-2 border-l-8 border-r-8 border-blue-700 min-h-screen">
+        <header class="flex flex-row items-center py-1">
+            <div class="flex-1">
+                <h1 class="text-4xl font-black text-blue-800">theNetwork</h1>
+            </div>
+            <div class="hidden lg:block">
+                <input class="border border-gray-400 rounded p-1 font-thin text-sm outline-none" type="email"
+                    placeholder="Email" />
+                <input class="border border-gray-400 rounded p-1 font-thin text-sm outline-none" type="password"
+                    placeholder="Password" />
+                <button class="bg-blue-600 text-gray-100 px-2 rounded h-full font-semibold text-base">
+                    login
+                </button>
+                <a href="" class="font-thin text-base ml-1">New User?</a>
+            </div>
+        </header>
+        <div class="flex flex-col md:flex-row mt-4">
+            <div class="flex flex-col px-2">
+                <img class="rounded-full self-center shadow-lg transform transition duration-500 ease-in-out hover:scale-105"
+                    src="https://randomuser.me/api/portraits/men/3.jpg" alt="" />
+                <h1 class="font-bold mt-2 text-center text-xl text-blue-800">
+                    John Doe
+                </h1>
+                <button class="bg-blue-600 text-gray-100 rounded mt-2 w-min self-center px-2 py-1">
+                    connect
+                </button>
+            </div>
+            <div class="flex-1 px-0 ml-0 md:ml-2">
+                <div class="mt-2 md:mt-0">
+                    <h1 class="font-extrabold text-2xl text-blue-700">About</h1>
+                    <hr />
+                    <ul class="mt-2">
+                        <li>
+                            <strong class="text-blue-700">Email:</strong>
+                            <span class="font-extralight"> john.doe@example.com </span>
+                        </li>
+                        <li>
+                            <strong class="text-blue-700">Phone:</strong>
+                            <span class="font-extralight"> (848)-454-4543 </span>
+                        </li>
+                        <li>
+                            <strong class="text-blue-700">Birthday:</strong>
+                            <span class="font-extralight"> 10/04/1994 </span>
+                        </li>
+                        <li>
+                            <strong class="text-blue-700">Address:</strong>
+                            <span class="font-extralight"> 2376 Marsh Ln </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-2">
+                    <h1 class="font-extrabold text-2xl text-blue-700">Connections</h1>
+                    <hr />
+                    <p class="mt-2 font-extralight">
+                        <a class="text-blue-600" href=""> John Doe </a>
+                        is connected with
+                        <a href="" class="text-blue-600">Jane Doe</a> and
+                        <a class="text-blue-600" href=""> 248 more people. </a>
+                    </p>
+                </div>
+                <div class="mt-2">
+                    <h1 class="font-extrabold text-2xl text-blue-700">Likes</h1>
+                    <hr />
+                    <ul class="mt-2">
+                        <li>
+                            <strong class="text-blue-700">Books: </strong>
+                            <span class="font-extralight text-sm">Think and Grow Rich, Atomic Habits
+                            </span>
+                        </li>
+                        <li>
+                            <strong class="text-blue-700">Music: </strong>
+                            <span class="font-extralight text-sm">Coldplay, The Chainsmokers
+                            </span>
+                        </li>
+                        <li>
+                            <strong class="text-blue-700">Movies: </strong>
+                            <span class="font-extralight text-sm">The Wolf of Wallstreet</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-2">
+                    <h1 class="font-extrabold text-2xl text-blue-700 mt-2">Photos</h1>
+                    <hr />
+                    <div id="images" class="flex flex-row flex-wrap justify-between"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/app.js"></script>
+
+</html>
