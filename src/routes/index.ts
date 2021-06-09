@@ -17,8 +17,17 @@ router.get("/:slug/view", (req, res) => {
   const { slug } = req.params;
 
   // Getting Images names
-  const imagesPath = path.join(__dirname, "../../demos", slug, "assets", "");
-  const images: string[] = fs.readdirSync(imagesPath);
+  const imagesPath = path.join(
+    __dirname,
+    "../../demos",
+    slug,
+    "assets",
+    "screenshots"
+  );
+  let images: string[] | undefined;
+  if (fs.existsSync(imagesPath)) {
+    images = fs.readdirSync(imagesPath);
+  }
 
   // Getting metadata from About.md
   const aboutPath = path.join(__dirname, "../../demos", slug, "About.md");

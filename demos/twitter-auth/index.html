@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login on Twitter</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="flex flex-col items-center">
+      <div class="mt-6 flex flex-col px-8">
+        <img src="./assets/twitter-logo.svg" alt="twitter-logo" width="38" />
+        <span class="font-black text-4xl mt-8">Log in to Twitter</span>
+        <div>
+          <!-- Phone, email or username -->
+          <div
+            id="userIdBox"
+            class="
+              h-16
+              w-80
+              mt-6
+              border border-gray-300
+              rounded
+              px-2
+              py-1
+              flex flex-col
+              justify-center
+              relative
+              overflow-hidden
+              hover:cursor-text
+            "
+          >
+            <span
+              id="userIdLabel"
+              class="text-gray-500 text-lg z-10 w-max select-none"
+              >Phone, email, or username</span
+            >
+            <input
+              id="userIdInput"
+              type="text"
+              class="focus:outline-none absolute h-8 bottom-1 w-full"
+              onkeydown="onChangeUserId(this.value)"
+            />
+          </div>
+          <!-- Password -->
+          <div
+            id="passwordBox"
+            class="
+              h-16
+              w-80
+              mt-6
+              border border-gray-300
+              rounded
+              px-2
+              py-1
+              flex flex-col
+              justify-center
+              relative
+              overflow-hidden
+              hover:cursor-text
+            "
+          >
+            <span
+              id="passwordLabel"
+              class="text-gray-500 text-lg z-10 w-max select-none"
+              >Password</span
+            >
+            <input
+              id="passwordInput"
+              type="password"
+              class="focus:outline-none absolute h-8 bottom-1 w-full"
+              onkeydown="onChangePassword(this.value)"
+            />
+          </div>
+          <!-- Login Button -->
+          <button
+            id="loginButton"
+            class="
+              mt-4
+              w-full
+              p-3
+              rounded-full
+              bg-blue-200
+              text-white
+              font-bold
+            "
+          >
+            Log in
+          </button>
+          <!-- Other Actions -->
+          <div class="text-blue-400 flex justify-center mt-8">
+            <span class="cursor-pointer hover:underline">Forgot Password?</span>
+            <span class="mx-1">·</span>
+            <span class="cursor-pointer hover:underline"
+              >Sign up for Twitter</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/app.js"></script>
+</html>

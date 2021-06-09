@@ -9,7 +9,7 @@
    - folder name must be in kebab case
    - for eg. _the-ecom-store_
 5. Now, this folder must have following things-
-   - `assets/` folder
+   - `assets/screenshots` folder
      - Screenshots for your demo i.e. `desktop.png` and `mobile.png` are compulsor. You can add more also.
    - `css/styles.css` (If you are having any custom css)
    - `js/app.css` (If you are having any custom js)
