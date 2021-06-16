@@ -2,6 +2,11 @@ const gotoHome = () => {
   window.location = "/";
 };
 
+const openLink = (link) => {
+  if (!link) return;
+  window.open(link, "_blank");
+};
+
 const openDemo = (name) => {
   window.location.href = `/${name}`;
 };
@@ -64,4 +69,13 @@ const toggleJSCodeView = () => {
       "https://upload.wikimedia.org/wikipedia/commons/4/4f/TriangleArrow-Down.svg";
     jsCode.style.display = "block";
   }
+};
+
+const search = () => {
+  console.log("jansk");
+  const input = document.getElementById("searchInput");
+  if (input.value === "") {
+    return;
+  }
+  window.location.href = `?search=${input.value}`;
 };

@@ -7,10 +7,20 @@ import hljs from "highlight.js";
 const router: Router = Router();
 
 router.get("/", (req, res) => {
+  const search = req.query?.search;
   const demosDir = path.join(__dirname, "../../demos");
-  const demos: string[] = fs.readdirSync(demosDir);
-
-  res.render("index", { demos });
+  const allDemos: string[] = fs.readdirSync(demosDir);
+  if (!search) {
+    return res.render("index", { demos: allDemos });
+  }
+  const demos: string[] = [];
+  allDemos.forEach((demo) => {
+    const _demoName = demo.split("-").join("");
+    if (_demoName.includes(<string>search)) {
+      demos.push(demo);
+    }
+  });
+  res.render("index", { demos, searchText: search });
 });
 
 router.get("/:slug/view", (req, res) => {
