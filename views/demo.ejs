@@ -8,10 +8,7 @@
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/atom-one-dark.min.css"
-    />
+    <link rel="stylesheet" href="/css/prism-a11y-dark.css" />
     <link rel="stylesheet" href="/css/styles.css" />
     <title>Tailwind Demos: <%= metadata.title %></title>
   </head>
@@ -105,12 +102,15 @@
           <div
             id="html-code"
             class="
+              code-block
               whitespace-pre
               bg-gray-900
               text-gray-200
+              m-2
               px-2
+              rounded
+              text-sm
               overflow-scroll
-              mt-2
               hidden
             "
           >
@@ -140,12 +140,15 @@
           <div
             id="js-code"
             class="
+              code-block
               whitespace-pre
               bg-gray-900
               text-gray-200
+              m-2
               px-2
+              rounded
+              text-sm
               overflow-scroll
-              mt-2
               hidden
             "
           >
@@ -177,12 +180,15 @@
           <div
             id="css-code"
             class="
+              code-block
               whitespace-pre
               bg-gray-900
               text-gray-200
+              m-2
               px-2
+              rounded
+              text-sm
               overflow-scroll
-              mt-2
               hidden
             "
           >

@@ -14,14 +14,15 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "highlight.js": "^11.0.1",
-    "parse-md": "^2.0.4"
+    "parse-md": "^2.0.4",
+    "prismjs": "^1.23.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
     "@types/ejs": "^3.0.6",
     "@types/express": "^4.17.12",
     "@types/jest": "^26.0.23",
+    "@types/prismjs": "^1.16.5",
     "jest": "^27.0.4",
     "ts-jest": "^27.0.2",
     "ts-node": "^10.0.0",

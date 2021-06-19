@@ -2,7 +2,7 @@ import { Router } from "express";
 import fs from "fs";
 const parseMd = require("parse-md").default;
 import path from "path";
-import hljs from "highlight.js";
+import Prism from "prismjs";
 
 const router: Router = Router();
 
@@ -63,9 +63,9 @@ router.get("/:slug/view", (req, res) => {
   markup = fs.readFileSync(markupPath, "utf-8");
 
   const code = {
-    css: css && hljs.highlightAuto(css).value,
-    js: js && hljs.highlightAuto(js).value,
-    markup: hljs.highlightAuto(markup).value,
+    css: css && Prism.highlight(css, Prism.languages.css, "css"),
+    js: js && Prism.highlight(js, Prism.languages.javascript, "javascript"),
+    markup: Prism.highlight(markup, Prism.languages.html, "html"),
   };
 
   res.render("demo", { slug, metadata, images, code });
